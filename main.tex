@@ -1,0 +1,246 @@
+\documentclass{article}
+
+\title{MAT139 Notes}
+\author{Ahmad Bajwa}
+\input{header.tex}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{Integration}
+    The integral of \(f\) is the area under the graph of \(f\). The proper definition follows from the development of helper definitions and theorems, which are collected below.
+
+    \subsection{Infimum and Supremum}
+    
+    \begin{defi}[Bounds]
+      A set \(A \in \R\) is \emph{bounded above} if there exists a number \(b \in \R\) such that for all \(a \in A, a \leq b\). Here, \(b\) is called an \emph{upper bound} of \(A\). Likewise, \(A\) is \emph{bounded below} if there exists some \(b \in \R\) such that for all \(a \in A, a \geq b\). Here, \(b\) is \emph{lower bound} of \(A\).
+      \end{defi}
+
+      \vspace*{5pt}
+
+      \begin{defi}[Infimum]
+        Let \(A \subseteq \R\). A real number \(i\) is the \emph{infimum}, or \emph{greatest lower bound} of \(A\) if:
+        \begin{enumerate}
+          \item \(i\) is a lower bound of \(A\);
+          \item if \(b\) is any lower bound of \(A\), then \(i \geq b\).
+        \end{enumerate}
+
+        We write \(i = \inf A\) to denote that \(i\) is the infimum of \(A\).
+      \end{defi}
+      
+      \vspace*{5pt}
+
+      \begin{defi}[Supremum]
+        Let \(A \subseteq \R\). A real number \(c\) is the \emph{supremum,} or \emph{least upper bound} of \(A\) if:
+        \begin{enumerate}
+          \item \(c\) is an upper bound of \(A\);
+          \item if \(b\) is any upper bound for \(A\), then \(c \leq b\).
+        \end{enumerate}
+
+        We write \(c = \sup A\) to denote that \(c\) is the supremum of \(A\).
+      \end{defi}
+
+      When discussing functions, the supremum and infimum of a function \(f\) are the supremum and infimum of its \emph{range}.
+
+      \subsection{Sums and Sigma Notation}
+      \begin{defi}[Sigma Notation]
+        Let \(m\) and \(n\) be integers, and \(a_m, a_{m+1} + \ldots + a_n\) be real numbers. The \emph{sum} of \(a_m, a_{m+1}, \ldots, a_n\) is defined as 
+        \[
+          a_m + a_{m+1} + \ldots + a_n = \sum_{i = m}^{n}{a_i}
+        \]
+
+      \end{defi}
+
+      A summation can be thought of as a simple additive for-loop, which adds the value of the indexed variable \(a_i\) to a running total. Just like a for-loop, the letter \(i\) is a vound variable, and can be replaced with any other letter.
+      
+      The notation is most comfortably read (at least by myself) as follows: ``the sum as \(i\) goes from \(m\) to \(n\) of \(a_i\).''
+
+      \begin{prop}[Properties of sums]
+        Suppose \(c, a_i,\) and \(b_i\) are real numbers for \(i = m, m+1, \ldots, m_n\), where \(n\) is an integer. Then,
+        \begin{enumerate}
+          \item \(\begin{aligned}[t]
+                    \sum_{i = m}^{n}{(c \cdot a_i)} = c \sum_{i = m}^{n}{a_i}
+                 \end{aligned}\)
+          \item \(\begin{aligned}[t]
+                    \sum_{i = m}^{n}{(a_i + b_i)} = \sum_{i = m}^{n}{a_i} + \sum_{i = m}^{n}{b_i}
+                  \end{aligned}\)
+      \end{enumerate}
+      \end{prop}
+
+      \begin{eg}
+        The sum 
+        \[
+          3 + 9 + 15 + 21 + 27 + 33 + \ldots  + 297 + 303
+        \]
+        can be expressed in the following, equivalent ways:
+
+        \begin{enumerate}
+          \item \(\sum_{i = 1}^{51}{3(2i - 1)}\)
+          \item \(\sum_{i = 7}^{57}{(2i - 3)}\)
+          \item \(3\sum_{i = 0}^{50}{(2i+1)}\)
+          \item \(3\sum_{n = 0}^{50}{(2n+1)}\)
+        \end{enumerate}
+      \end{eg}
+
+      
+
+  \subsection{Partitions, Heights, and Sums}
+      To construct our rectangles, we must first talk about \emph{partitions}:
+
+      \begin{defi}[Partitions]
+        A \emph{partition} of an interval \([a,b]\) is a finite set \(P\) such that 
+
+        \[
+          P = \{x_0,x_1,x_2, \ldots, x_n\}
+        \]
+         
+        \noindent
+        where \(x_0 = a, x_n = b,\) and \(x_0 < x_1 < x_2 < \ldots < x_n.\)
+      \end{defi}
+
+      The points in \(P\) need not be equidistant; for example, a possible partition of the interval \([1,2]\) is \(\{1, 1.2, 1.314, \phi, 1.9, 2\}.\) Therefore, our rectangles can have varying widths.
+
+      Next, we need to define the heights of our rectangles. This requires a two-pronged approach; our rectangles can either be big enough to completely cover the curve, or be small enough to be completely covered by the curve. 
+
+      \begin{defi}
+        For each sub-interval \([x_{i-1},x_i]\) of \(P\), where \(i \geq 1,\) define
+
+        \[
+          m_i = \inf\{f(x) \mid x \in [x_{i-1},x_i]\}
+        \]
+        \[
+          M_i = \sup\{f(x) \mid x \in [x_{i-1},x_i]\}
+        \]
+        (No visuals; I hate TikZ. Sorry, future me.)
+      \end{defi}
+
+      Now that we can talk about the widths and heights of both small and big rectangles, we can define their sums like so:
+
+      \begin{defi}[Upper and Lower Sums]
+        Let \(f:[a,b] \to \R\), and consider a partition \(P = \{x_0,x_1,x_2, \ldots, x_n\}\) of \([a,b]\). The \emph{lower sum} of \(f\) with respect to \(P\) is given by
+
+        \[
+          L_f(P) = \sum_{i=1}^{n}{m_i(x_i-x_{i-1})}
+        \]
+
+        Similarly, the \emph{upper sum} is defined as 
+
+        \[
+          U_f(P) = \sum_{i=1}^{n}{M_i(x_i-x_{i-1})}
+        \]
+
+        (I prefer Tyler's notation for denoting upper/lower sums to Alfonso's, so I've used it here. Functionally, they are the same).
+      \end{defi}
+      
+      \begin{remark}
+        By virtue of their definitions, it is easy to see that \(M_i \geq m_i\) for all \(i \geq 1\). Which means that for any partition \(P\) of \([a,b]\), \(U_f(P) \geq L_f(P)\).
+      \end{remark}
+
+      A partition with 10 elements may allow us to calculate upper and lower sums which are decent but imprecise estimates of a function's integral. If we were to keep our 10-element partition, and add 90 more points to it such that the original partition is a \emph{subset} of the new one, we could potentially get a much better estimate of the integral. This is the motivation behind a \emph{refinement}.
+
+      \begin{defi}[Refinements]
+        Let \(P\) be a partition of [a,b]. A partition \(Q\) of [a,b] is called a \emph{refinement} of \(P\) if \(P \subseteq Q\).
+      \end{defi}
+
+      The following properties follow intuitively from the definitions stated earlier. The first assures that refinements do indeed make upper sums smaller (or unchanged) and lower sums larger (or unchanged).
+      
+      \begin{lemma}
+        If \(Q\) is a refinement of \(P\), then \(L(f,P) \leq L(f,Q)\) and \(U(f,P) \geq U(f,Q)\).
+      \end{lemma}
+
+      The next lemma states that all upper sums are greater than or equal to all lower sums. 
+
+      \begin{lemma}
+        Let \(f:[a,b] \to \R\). Then, for any partitions \(P_1, P_2\) of \([a,b]\), \(L(f,P_1) \leq U(f,P_2)\).
+      \end{lemma}
+
+
+
+
+  \subsection{The Integral}
+  The idea so far has been to take finer and finer partitions of \([a,b]\), and to calculate the upper and lower sums of \(f\) with respect to these partitions. If the upper and lower sums converge to the same value, we say that \(f\) is \emph{integrable} on \([a,b]\), and that value is the integral of \(f\) on \([a,b]\).
+
+  \begin{defi}
+    Let \(f: [a,b] \to \R\) be a bounded function, and let \(\mathcal{P}\) be the set of all partitions of \([a,b]\). The \emph{upper integral} of \(f\) is
+
+    \[
+      \overline{I_{a}^{b}}(f) = \sup\{L(f, P) \mid P \in \mathcal{P}\}
+    \]
+    The \emph{lower integral} of \(f\) is
+    \[
+      \underline{I_{a}^{b}}(f) = \inf\{U(f, P) \mid P \in \mathcal{P}\}
+    \]
+  \end{defi}
+
+  \begin{remark}
+    By Lemma 1.2.2, it is clear that \(\overline{I_{a}^{b}}(f) \geq \underline{I_{a}^{b}}(f)\).
+  \end{remark}
+
+  This brings us to the following paraphrase of the above paragraph:
+
+  \begin{defi}[Integrability]
+    Let \(f: [a,b] \to \R\) be a bounded function. If \(\overline{I_{a}^{b}}(f) = \underline{I_{a}^{b}}(f)\), then we say that \(f\) is \emph{integrable} on \([a,b]\), and we denote the integral as \(\int_{a}^{b}{f(x) \,dx}\).
+  \end{defi}
+
+
+\subsection{Integrable and Non-Integrable Functions}
+
+  We use the following theorem without proof:
+
+  \begin{thm}[Continuity \(\implies\) Integrability]
+    If \(f:[a,b] \to \R\) is continuous, then \(f\) is integrable on \([a,b]\).
+  \end{thm}
+
+  The fact that non-continuous functions can be integrable is demonstrated by the following example:
+
+  \begin{eg}
+    Let f be a function defined as 
+
+    \[
+      f(x) = \begin{cases}
+        1 & \text{if } x = 0 \\
+        0 & \text{if } x \neq 0
+      \end{cases}
+    \]
+    Prove that \(f\) is integrable on \([-1,1]\).
+  \end{eg}
+
+  \begin{proof}
+    Let \(f\) be the function defined above. Suppose \(P\) is an arbitrary partition of [-1,1]. Clearly, \(m_i\) = 0 for all \(i \geq 1\). Thus,
+
+    \[
+      L(f,P) = \sum_{i = 1}^{n}{m_i(x_i - x_{i-1})} = 0.
+    \]
+    Since \(L(f,P) = 0\) for all partitions \(P\) of [-1,1], we have that \(\underline{I_{-1}^{1}}(f) = \sup\{0\} = 0\).
+
+    Now, consider the upper sums. Since \(M_i = 1\) for all \(i \geq 1\), we have that
+
+    \[
+      0 < U(f,P) = \sum_{i = 1}^{n}{M_i(x_i - x_{i-1})} = \sum_{i = 1}^{n}{1 \cdot (x_i - x_{i-1})} \leq 2
+    \]
+    for all partitions \(P\) of [-1,1]. Thus, \(\overline{I_{-1}^{1}}(f) = \inf\{(0,2]\} = 0\).
+    \vspace*{5pt}
+    We have shown that \(\overline{I_{-1}^{1}}(f) = \underline{I_{-1}^{1}}(f) = 0\), so \(f\) is integrable on [-1,1], as needed.
+  \end{proof}
+
+  Below is an example of a function which is \emph{not integrable}:
+
+  \begin{eg}
+    Let f be a function defined as 
+
+    \[
+      f(x) = \begin{cases}
+        1 & \text{if } x \in \Q \\
+        0 & \text{if } x \in \R \setminus \Q
+      \end{cases}
+    \]
+    (What a surprise!)
+
+    \begin{proof}
+      I'm too lazy to reproduce it here, but the proof is in the videos. (We've used a sneaky proof tactic here, called \emph{proof by cubersome reference.})
+    \end{proof}
+    
+  \end{eg} 
+\end{document}

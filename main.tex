@@ -270,10 +270,10 @@
     Fun fact: one of the people involved with the founding of this theorem was Isaac Newton's PhD advisor!
   \end{remark}
 
-  The following is the proof for (i) of the \emph{FTC,} which comes down to a clever application of telescoping sums.
+  The following is the proof for part (i) of the \emph{FTC,} which comes down to a clever application of telescoping sums.
 
   \begin{proof}[\textbf{Proof of (i)}]
-    Suppose \(f:[a,b] \to \R\) is integrable, and \(F:[a,b] :\R\) satisfies \(F'(x) = f(x)\) for all \(x \in [a,b].\) Let \(P = \{x_0,\ldots, x_n\}\) be an arbitrary partition of \([a,b]\). Narrowing down our focus to a single sub-interval \([x_{i-1},x_i]\), since \(F\) is differentiable, by the Mean Value Theorem, there exists a \(c_i \in [x_{i-1},x_i]\) such that
+    Suppose \(f:[a,b] \to \R\) is integrable, and \(F:[a,b] :\R\) satisfies \(F'(x) = f(x)\) for all \(x \in [a,b].\) Fix \(P = \{x_0,\ldots, x_n\}\) to be an arbitrary partition of \([a,b]\). Narrowing down our focus to a single sub-interval \([x_{i-1},x_i]\), since \(F\) is differentiable, by the Mean Value Theorem, there exists a \(c_i \in [x_{i-1},x_i]\) such that
     \[
       F'(c_i) = \frac{F(x_i) - F(x_{i-1})}{x_i - x_{i-1}}.
     \] 
@@ -286,7 +286,29 @@
     But since \(F'(c_i) = f(c_i)\), we have that
     \[
       F(x_i) - F(x_{i-1}) = f(c_i)(x_i - x_{i-1}). 
-    \]
+    \].
+
+    Now, consider the upper sum \(U_P(f)\) and lower sum \(L_P(f)\). It holds that 
+
+    \begin{align*}
+      &\sum_{i = 1}^{n}m_i(x_i - x_{i-1}) \leq \sum_{i = 1}^{n}f(c_i)(x_i - x_{i-1}) \leq \sum_{i = 1}^{n}M_i(x_i - x_{i-1}) \\
+      &\implies L_P(f) \leq \sum_{i = 1}^{n}f(c_i)(x_i - x_{i-1}) \leq U_P(f) \\
+      &\implies L_P(f) \leq \sum_{i = 1}^{n}F(x_i)-F(x_{i-1}) \leq U_P(f).
+    \end{align*}
+
+    We can cheekily simplify this becausae the middle sum telescopes. So, we end up with:
+
+    \begin{align*}
+      L_P(f) \leq \sum_{i = 1}^{n}F(b)-F(a) \leq U_P(f) \\
+    \end{align*}
+
+    Since \(P\) is arbitrary, we have that
+
+    \begin{align*}
+      \underline{I_{a}^{b}}(f) \leq F(b) - F(a) \leq \overline{I_{a}^{b}}(f)
+    \end{align*}
+
+    Because \(f\) is integrable, we have that \(\underline{I_{a}^{b}}(f) = \overline{I_{a}^{b}}(f)\), so \(F(b) - F(a) = \int_{a}^{b}f(x) \d x\), as needed.
   \end{proof}
 
 \end{document}

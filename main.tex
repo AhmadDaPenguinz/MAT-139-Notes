@@ -42,7 +42,8 @@
         We write \(c = \sup A\) to denote that \(c\) is the supremum of \(A\).
       \end{defi}
 
-      When discussing functions, the supremum and infimum of a function \(f\) are the supremum and infimum of its \emph{range}.
+      When discussing functions, the supremum and infimum of a function \(f\) are the supremum and infimum of its \emph{range}. Following are some useful propositions about suprema:
+
 
       \subsection{Sums and Sigma Notation}
       \begin{defi}[Sigma Notation]
@@ -169,7 +170,7 @@
     \]
     The \emph{lower integral} of \(f\) is
     \[
-      \underline{I_{a}^{b}}(f) = \inf\{U(f, P) \mid P \in \mathcal{P}\}
+       =\underline{I_{a}^{b}}(f) \inf\{U(f, P) \mid P \in \mathcal{P}\}
     \]
   \end{defi}
 
@@ -184,7 +185,7 @@
   \end{defi}
 
 
-\subsection{Integrable and Non-Integrable Functions}
+\subsection{Integrability}
 
   We use the following theorem without proof:
 
@@ -242,4 +243,50 @@
     \end{proof}
     
   \end{eg} 
+
+  We can solidify our criteria for integrability. For the supremum of one set to be equal to the iniumum of another set, it is intuitive to see that their elements have to be arbitrarily close to each other; hence, the below criteria.
+  \begin{defi}[The "\(\varepsilon\)-characterization" of integrability]
+    Let \(f\) be a bounded function on \([a,b]\). Then \(f\) is integrable \textbf{if and only if} \(\forall \varepsilon > 0 \) there exists a partition \(P_{\varepsilon}\) of \([a,b]\) such that \(U_f(P) - L_f(P) < \varepsilon\).
+  \end{defi}
+
+  \subsection{The Fundamental Theorem of Calculus}
+
+  \begin{thm}[The Fundamental Theorem of Calculus]
+    Here goes:
+    \item[]
+    \begin{enumerate}
+      \item Suppose \(f:[a,b] \to \R\) is integrable, and \(F:[a,b] \to R\) satisfies \(F'(x) = f(x)\) for all \(x \in [a,b]\). Then, \[
+        \int_{a}^{b}f(x) \d x = F(b) - F(a). 
+      \]
+      \item Let \(g:[a,b] \to \R\) be integrable and define \(G:[a,b] \to \R\) by \[
+        G(x) = \int_{a}^{x}g(t) \d t.
+      \]
+    \end{enumerate}
+
+    Then \(G\) is continuous. Moreover, if \(g\) is continuous at \(x_0 \in [a,b]\), then \(G\) is differentiable at \(x_0\) and \(G'(x_0) = g(x_0)\).
+  \end{thm}
+
+  \begin{remark}
+    Fun fact: one of the people involved with the founding of this theorem was Isaac Newton's PhD advisor!
+  \end{remark}
+
+  The following is the proof for (i) of the \emph{FTC,} which comes down to a clever application of telescoping sums.
+
+  \begin{proof}[\textbf{Proof of (i)}]
+    Suppose \(f:[a,b] \to \R\) is integrable, and \(F:[a,b] :\R\) satisfies \(F'(x) = f(x)\) for all \(x \in [a,b].\) Let \(P = \{x_0,\ldots, x_n\}\) be an arbitrary partition of \([a,b]\). Narrowing down our focus to a single sub-interval \([x_{i-1},x_i]\), since \(F\) is differentiable, by the Mean Value Theorem, there exists a \(c_i \in [x_{i-1},x_i]\) such that
+    \[
+      F'(c_i) = \frac{F(x_i) - F(x_{i-1})}{x_i - x_{i-1}}.
+    \] 
+
+    Rearrange as follows:
+    \[
+      F(x_i) - F(x_{i-1}) = F'(c_i)(x_i - x_{i-1}).
+    \]
+
+    But since \(F'(c_i) = f(c_i)\), we have that
+    \[
+      F(x_i) - F(x_{i-1}) = f(c_i)(x_i - x_{i-1}). 
+    \]
+  \end{proof}
+
 \end{document}

@@ -3,13 +3,13 @@
 \title{MAT139 Notes}
 \author{Ahmad Bajwa}
 \input{header.tex}
-
+\usepackage{dsfont}
 \begin{document}
 \maketitle
 \tableofcontents
 \pagebreak
 
-\section{Integration}
+\section{The Theory of Integration}
     The integral of \(f\) is the area under the graph of \(f\). The proper definition follows from the development of helper definitions and theorems, which are collected below.
 
     \subsection{Infimum and Supremum}
@@ -251,6 +251,7 @@
 
   \subsection{The Fundamental Theorem of Calculus}
 
+  We've built the theory that the Integral hinges on; however, so far we haven't developed a general method to determine the value of the integral. Perhaps intuitively, it is impossible to explicitly calculate the upper and lower sums of most functions. Fortunately, the following theorem describes a method for evaluating integrals.
   \begin{thm}[The Fundamental Theorem of Calculus]
     Here goes:
     \item[]
@@ -273,7 +274,7 @@
   The following is the proof for part (i) of the \emph{FTC,} which comes down to a clever application of telescoping sums.
 
   \begin{proof}[\textbf{Proof of (i)}]
-    Suppose \(f:[a,b] \to \R\) is integrable, and \(F:[a,b] :\R\) satisfies \(F'(x) = f(x)\) for all \(x \in [a,b].\) Fix \(P = \{x_0,\ldots, x_n\}\) to be an arbitrary partition of \([a,b]\). Narrowing down our focus to a single sub-interval \([x_{i-1},x_i]\), since \(F\) is differentiable, by the Mean Value Theorem, there exists a \(c_i \in [x_{i-1},x_i]\) such that
+    Suppose \(f:[a,b] \to \R\) is integrable, and \(F:[a,b] \to \R\) satisfies \(F'(x) = f(x)\) for all \(x \in [a,b].\) Fix \(P = \{x_0,\ldots, x_n\}\) to be an arbitrary partition of \([a,b]\). Narrowing down our focus to a single sub-interval \([x_{i-1},x_i]\), since \(F\) is differentiable, by the Mean Value Theorem, there exists a \(c_i \in [x_{i-1},x_i]\) such that
     \[
       F'(c_i) = \frac{F(x_i) - F(x_{i-1})}{x_i - x_{i-1}}.
     \] 
@@ -310,5 +311,40 @@
 
     Because \(f\) is integrable, we have that \(\underline{I_{a}^{b}}(f) = \overline{I_{a}^{b}}(f)\), so \(F(b) - F(a) = \int_{a}^{b}f(x) \d x\), as needed.
   \end{proof}
+
+  \begin{proof}[\textbf{Proof of (ii)}]
+    
+  \end{proof}
+
+  \pagebreak
+
+
+  \section{Integration Techniques}
+  The following are direct corollaries to the \emph{Fundamental Theorem of Calculus}:
+
+  \subsection{Integration by Substitution}
+  \begin{thm}[u-substitution]
+    Suppose \(g\) is a function whose derivative \(g'\) is continuous on an \([a,b],\) and suppose that \(f\) is a function that is continuous on \(g[a,b].\) Then, \[
+      \int_{a}^{b}f(g(x))g'(x) \d x = \int_{g(a)}^{g(b)}f(u) \d u.
+    \]
+  \end{thm}
+
+  \section{Sequences}
+  \subsection{Intro}
+
+  \begin{defi}[Sequence]
+    A \emph{sequence} is a function \(a: \N \to \R\). Usually (i.e. always) we write \(a_n\) instead of \(a(n)\) to denote the \(n\)th term of the sequence. To differentiate it from a function called \(a\), we write \((a_n)_{n=0}^{\infty}\). 
+    \end{defi}
+    Sequences, like functions, can be bounded. 
+
+    \begin{defi}[Boundedness]
+      A sequence \((a_n)\) is \emph{bounded above} if there exists a number \(M \in \R\) such that \(a_n \leq M\) for all \(n \in \N\). Likewise, \((a_n)\) is \emph{bounded below} if there exists a number \(m \in \R\) such that \(a_n \geq m\) for all \(n \in \N\). If both a lower and upper bound exist, the sequence is \emph{bounded.}
+    \end{defi}
+
+    \subsection{Convergent Sequences}
+
+    \begin{defi}
+      A sequence \((a_n)\) \emph{converges} to \(L \in \mathds{R}\) if for all \(\varepsilon > 0\) there exists some \(N \in \R\) such that for all \(n \in \N, n \geq N \implies \abs{a_n - L} < \varepsilon\).
+    \end{defi}
 
 \end{document}

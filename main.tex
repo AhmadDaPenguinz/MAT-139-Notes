@@ -3,7 +3,6 @@
 \title{MAT139 Notes}
 \author{Ahmad Bajwa}
 \input{header.tex}
-\usepackage{utopia}
 \begin{document}
 \maketitle
 \tableofcontents
@@ -311,7 +310,7 @@
   \end{proof}
 
   \begin{proof}[\textbf{Proof of (ii)}]
-    
+    You can do it! (I'm too lazy to type it out).
   \end{proof}
 
   \subsection{Properties of the Definite Integral}
@@ -589,6 +588,7 @@
 
   }
 
+  \pagebreak
 
   \section{Sequences}
   \subsection{Intro}
@@ -696,6 +696,8 @@
     \begin{proof}
       Most of them are direct applications of L'Hopital's Rule, and are covered in \href{https://youtu.be/Dd3n2rfqxf4?si=sRu9ItBn7WwUNnSj}{11.7}. 
     \end{proof}
+
+    \pagebreak
 
     \section{Series}
 
@@ -942,31 +944,85 @@
     \section{Power Series and Taylor Series}
     \subsection{Power Series}
     \begin{defi}[Power Series]
-      A \emph{power series} is a series of the form 
+      A \emph{power series} centered at \(a \in \R\) is a series of the form
       \[
         \sum_{n=0}^{\infty}c_n(x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2 + \ldots
       \]
-      where \(a, c_0, c_1, c_2, \ldots \in \R\).
+      where \(c_n \in \R\) are a sequence of real numbers.
     \end{defi}
 
-    \begin{eg}
+    \begin{prop}[Convergence of a Power Series]
       \everymath{\displaystyle}
+      Let \(f(x) = \sum_{n=0}^{\infty}c_n(x-a)^n\) be a power series centred at \(a \in \R\). Then there exists a unique number \(0 \leq R \leq \infty\) such that the power series converges \emph{absolutely} for all \(x \in (a-R, a+R)\) and diverges for all \(\abs{x-a} > R\). We call \(R\) the \textbf{\emph{radius of convergence}} of the power series. We call the set of all \(x\) for which the power series converges the \textbf{\emph{interval of convergence}.}
+    \end{prop}
+{
+  \everymath{\displaystyle}
+    \begin{eg}
       Determine for what values of \(x\) the series \(\sum_{n=0}^{\infty}\frac{x^n}{n!}\) converges.
+
+      \begin{proof}[Solution]
+        Consulting the definition we see that this is a power series with \(a = 0\), \(c_n = \frac{1}{n!}\). The Ratio Test will be our winning strategy here:
+  
+        \begin{align*}
+          \frac{\abs{a_{n+1}x^{n+1}}}{\abs{a_nx_n}} = \frac{\abs{x}^{n+1}}{(n+1)!} \cdot \frac{n!}{\abs{x}^n} = \frac{\abs{x}}{n+1}
+        \end{align*}
+  
+        which converges to 0 as \(n \to \infty\). Therefore, the series converges absolutely for all \(x \in \R\).
+      \end{proof}
     \end{eg}
 
-    \begin{proof}[Solution]
-      Consulting the definition we see that this is a power series with \(a = 0\), \(c_n = \frac{1}{n!}\). The Ratio Test will be our winning strategy here:
 
-      \begin{align*}
-        \frac{\abs{a_{n+1}x^{n+1}}}{\abs{a_nx_n}} = \frac{\abs{x}^{n+1}}{(n+1)!} \cdot \frac{n!}{\abs{x}^n} = \frac{\abs{x}}{n+1}
-      \end{align*}
+    \begin{eg}
+      Determine for what values of \(x\) the series \(f(x) =\sum_{n=0}^{\infty}\frac{x^n}{n^2}\) converges.
 
-      which converges to 0 as \(n \to \infty\). Therefore, the series converges absolutely.
-    \end{proof}
+      \begin{proof}[Solution]
+        Now, we have a power series with \(a = 0\), \(c_n = \frac{1}{n^2}\). By the ratio test and many skipped steps, we have:
 
-    \subsection{Properties of Power Series}
-    \begin{prop}[Properties of Power Series]
-      
-    \end{prop}
+        \[
+          \frac{\abs{a_{n+1}x^{n+1}}}{\abs{a_nx_n}} = \frac{\abs{x}^{n+1}}{(n+1)^2} \cdot \frac{n^2}{\abs{x}^n} \to \abs{x} \text{ as } n \to \infty.
+        \]
+        It follows that \(f(x)\) converges absolutely for all \(x \in (-1, 1)\).
+      \end{proof}
+    \end{eg}
+}
+    { \everymath{\displaystyle}
+      \begin{eg}[A series that diverges at both endpoints of the Interval of Convergence]
+        Let \(f(x) = \sum_{n=0}^{\infty}x^n\). The Interval of Convergence is \((-1, 1)\), and the series diverges at both endpoints (good practise to confirm this!).
+      \end{eg}
+
+      \begin{eg}[A series that converges at only one endpoint of IoC]
+        Let \(f(x) = \sum_{n=0}^{\infty}\frac{x^n}{n}\). The Interval of Convergence is \([-1, 1)\), and the series converges at \(x = 1\).
+      \end{eg}
+
+      \begin{eg}[A series with radius of convergence 0]
+        Let \(f(x) = \sum_{n=0}^{\infty}n!x^n\). The series converges only at \(x = 0\).
+      \end{eg}
+    }
+
+
+
+    \subsection{Taylor and Maclaurin Series}
+    Your first order of business here is to watch this \href{https://youtu.be/3d6DsjIBzJ4?si=7VURiutstrxDzuGF}{3Blue1Brown video}. This is non-negotiable.
+
+    Good. You've watched it. Now, let's define what Taylor and Maclaurin Series are.
+
+    \begin{defi}[Taylor and Maclaurin Series]
+      Suppose \(f^{(k)}(c)\) exists for all \(k \in \N\) (the video calls functions that satisfy this condition \(C^{\infty}\) functions. They're also known as smooth functions). The \emph{Taylor Series of \(f\)} about \(x = c\) is 
+      \[
+        S(x) = \sum_{n=0}^{\infty}\frac{f^{(n)}(c)}{n!}(x-c)^n = f(c) + f'(c)(x-c) + \frac{f''(c)}{2!}(x-c)^2 + \ldots
+      \]
+
+      if \(c = 0\), then the series is called the \emph{Maclaurin Series} of \(f\). A function that equals its Taylor Series is called \emph{analytic}.
+    \end{defi}
+
+    The five main Maclaurin/Taylor series you should know are:
+    \begin{enumerate}
+      \everymath{\displaystyle}
+      \item \(e^x = \sum_{n=0}^{\infty}\frac{x^n}{n!}\) for all \(x\)
+      \item \(\sin(x) = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)!}x^{2n+1}\) for all \(x\)
+      \item \(\cos(x) = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!}x^{2n}\) for all \(x\)
+      \item \(\ln(1+x) = \sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}x^n\) \(\abs{x} < 1\).
+      \item \(\frac{1}{1-x} = \sum_{n=0}^{\infty}x^n\) for \(\abs{x} < 1\).
+    \end{enumerate}
     
 \end{document}

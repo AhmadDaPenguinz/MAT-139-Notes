@@ -237,12 +237,12 @@
     (What a surprise!)
 
     \begin{proof}
-      I'm too lazy to reproduce it here, but the proof is in the videos. (We've used a sneaky proof tactic here, called \emph{proof by cubersome reference}).
+      I'm too lazy to reproduce it here, but the proof is in the videos. (We've used a sneaky proof tactic here, called \emph{proof by cumbersome reference}).
     \end{proof}
     
   \end{eg} 
 
-  We can solidify our criteria for integrability. For the supremum of one set to be equal to the iniumum of another set, it is intuitive to see that their elements have to be arbitrarily close to each other; hence, the below criteria.
+  We can solidify our criteria for integrability. For the supremum of one set to be equal to the infimum of another set, it is intuitive to see that their elements have to be arbitrarily close to each other; hence, the below criteria.
   \begin{defi}[The "\(\varepsilon\)-characterization" of integrability]
     Let \(f\) be a bounded function on \([a,b]\). Then \(f\) is integrable if and only if \(\, \forall \varepsilon > 0 \) there exists a partition \(P_{\varepsilon}\) of \([a,b]\) such that \(U_f(P) - L_f(P) < \varepsilon\).
   \end{defi}
@@ -295,7 +295,7 @@
       &\implies L_P(f) \leq \sum_{i = 1}^{n}F(x_i)-F(x_{i-1}) \leq U_P(f).
     \end{align*}
 
-    We can cheekily simplify this becausae the middle sum telescopes. So, we end up with:
+    We can cheekily simplify this because the middle sum telescopes. So, we end up with:
 
     \begin{align*}
       L_P(f) \leq \sum_{i = 1}^{n}F(b)-F(a) \leq U_P(f) \\
@@ -449,7 +449,7 @@
     \]
   \end{thm}
 
-  I, like you, have no idea what this means. The importance of this theorem is that it gives us a method for finding the partial fraction decomposition of a rational expression, provided the irreducible factors of the denominator are known. Note that provided the fraction is proper, \(f(x)\) plays no role in how a prtial fraction decomposition is formed. 
+  I, like you, have no idea what this means. The importance of this theorem is that it gives us a method for finding the partial fraction decomposition of a rational expression, provided the irreducible factors of the denominator are known. Note that provided the fraction is proper, \(f(x)\) plays no role in how a partial fraction decomposition is formed. 
 
   I'll now consider each of the four separate cases that can arise when decomposing a rational function into partial fractions.
 
@@ -508,7 +508,7 @@
        
     \end{enumerate}
 
-    Most of these identites (save for the reduction formulae)  can be derived really quickly on the fly, so there isn't much need to memorize them. However, there are six integrals I've committed to memory (an act that has saved me a million times over) that are of the following two types:
+    Most of these identities (save for the reduction formulae)  can be derived really quickly on the fly, so there isn't much need to memorize them. However, there are six integrals I've committed to memory (an act that has saved me a million times over) that are of the following two types:
     \begin{align*}
       \int \frac{\d x}{ax^2 + bx + c} \quad \text{and} \quad \int \frac{\d x}{\sqrt{ax^2 + bx + c}}
     \end{align*}
@@ -539,7 +539,7 @@
       u = x^a \pm \frac{1}{x^a}, \quad a \neq 0
     \]
 
-    We apply this substitution to integrals where terms in the integrand consist of a term in the form of the symmetric substtution for \(u\), together with a term of the form 
+    We apply this substitution to integrals where terms in the integrand consist of a term in the form of the symmetric substitution for \(u\), together with a term of the form 
 
     \[
       x^{a-1}  \mp \frac{1}{x^{a-1}}.
@@ -684,7 +684,7 @@
     
     The above is a shorthand way of saying that one sequence grows more slowly than another. 
     
-    The following theorem establishes a heirarchy among the most common families of sequences.
+    The following theorem establishes a hierarchy among the most common families of sequences.
     
     \begin{thm}[The ``Big Theorem"]
       Let \(n\) be a natural number, and let \(a > 0, b > 1\). Then,
@@ -866,7 +866,7 @@
 
 
       \subsection{Absolute Convergence}
-      The Alternating Series Test (hopefully) convinced you that, if anything, alternating series are \emph{more likely} to converge than their non-alternating counterparts. It should also be inutitive to think that, if the sum of the \emph{absolute values} of all of individual terms of a series converges, then the original series must also converge, too. 
+      The Alternating Series Test (hopefully) convinced you that, if anything, alternating series are \emph{more likely} to converge than their non-alternating counterparts. It should also be intuitive to think that, if the sum of the \emph{absolute values} of all of individual terms of a series converges, then the original series must also converge, too. 
 
       \begin{prop}
         \everymath{\displaystyle}
@@ -929,7 +929,7 @@
       \end{eg}
 
       \begin{prop}[Root Test]
-        Let \(\sum_{n=1}^{\infty}a_n\) be a series. Suppose that the sequence \((a_n)\) is nonnegative. Assume that 
+        Let \(\sum_{n=1}^{\infty}a_n\) be a series. Suppose that the sequence \((a_n)\) is non-negative. Assume that 
         \[
           \lim_{n \to \infty}(a_n)^{1/n}
         \]
@@ -937,7 +937,7 @@
       \end{prop}
 
       \begin{note}
-        Generally, the root test is used only if poweres are involved. The ratio test is particularly effective with factorials and with combinations of powers and factorials. The basic comparison tests and limit comparison tests are used most for rational series (the \emph{p}-series tests cana be especially good candidates for comparison). 
+        Generally, the root test is used only if powers are involved. The ratio test is particularly effective with factorials and with combinations of powers and factorials. The basic comparison test and limit comparison test are used most for rational series (the \emph{p}-series tests can be especially good candidates for comparison). 
       \end{note}
     \section{Power Series and Taylor Series}
     \subsection{Power Series}

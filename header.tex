@@ -1,4 +1,5 @@
 \usepackage[margin=1.2in]{geometry}
+\usepackage[dvipsnames]{xcolor} % For more color options
 \usepackage{alltt}
 \usepackage{amsfonts}
 \usepackage{amsmath}
@@ -16,11 +17,17 @@
 \usepackage{tcolorbox} % Add this line
 \usepackage{tcolorbox} % Add this line
 
+
+
+%Set font 
+% Header
 \makeatletter
 \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 \makeatother
 
+% Line spacing
 \linespread{1.1}
+
 
 % Header
 \usepackage{fancyhdr}
@@ -28,11 +35,21 @@
 \rhead{MAT139}
 \lhead{\normalfont{\leftmark}}
 
+% Hyperref
+\usepackage{hyperref}
+    \hypersetup{
+        colorlinks=true,
+        urlcolor=blue,
+        linkcolor=teal,
+    }
+
+
 % Theorems
 \theoremstyle{definition}
 \newtheorem*{aim}{Aim}
 \newtheorem*{axiom}{Axiom}
 \newtheorem*{claim}{Claim}
+\newtheorem*{note}{Note}
 \newtheorem*{cor}{Corollary}
 \newtheorem*{conjecture}{Conjecture}
 \newtheorem{defi}{Definition}[subsection]
@@ -47,19 +64,22 @@
 \newtheorem{assumption}{Assumption}[subsection]
 
 \newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
 
-\renewcommand{\labelitemi}{--}
 \renewcommand{\labelitemii}{$\circ$}
 \renewcommand{\labelenumi}{(\roman{*})}
+
+% Differential
 \renewcommand{\d}{\mathrm{d}}
 
 % Special sets
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
 
 % Brackets
 \newcommand{\abs}[1]{\left\lvert #1\right\rvert}
 \newcommand{\bket}[1]{\left\lvert #1\right\rangle}
 \newcommand{\brak}[1]{\left\langle #1 \right\rvert}
+

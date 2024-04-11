@@ -3,11 +3,12 @@
 \title{MAT139 Notes}
 \author{Ahmad Bajwa}
 \input{header.tex}
-\usepackage{dsfont}
+\usepackage{utopia}
 \begin{document}
 \maketitle
 \tableofcontents
 \pagebreak
+
 
 \section{The Theory of Integration}
     The integral of \(f\) is the area under the graph of \(f\). The proper definition follows from the development of helper definitions and theorems, which are collected below.
@@ -17,8 +18,6 @@
     \begin{defi}[Bounds]
       A set \(A \in \R\) is \emph{bounded above} if there exists a number \(b \in \R\) such that for all \(a \in A, a \leq b\). Here, \(b\) is called an \emph{upper bound} of \(A\). Likewise, \(A\) is \emph{bounded below} if there exists some \(b \in \R\) such that for all \(a \in A, a \geq b\). Here, \(b\) is \emph{lower bound} of \(A\).
       \end{defi}
-
-      \vspace*{5pt}
 
       \begin{defi}[Infimum]
         Let \(A \subseteq \R\). A real number \(i\) is the \emph{infimum}, or \emph{greatest lower bound} of \(A\) if:
@@ -30,7 +29,6 @@
         We write \(i = \inf A\) to denote that \(i\) is the infimum of \(A\).
       \end{defi}
       
-      \vspace*{5pt}
 
       \begin{defi}[Supremum]
         Let \(A \subseteq \R\). A real number \(c\) is the \emph{supremum,} or \emph{least upper bound} of \(A\) if:
@@ -103,7 +101,7 @@
 
       The points in \(P\) need not be equidistant; for example, a possible partition of the interval \([1,2]\) is \(\{1, 1.2, 1.314, \phi, 1.9, 2\}.\) Therefore, our rectangles can have varying widths.
 
-      Next, we need to define the heights of our rectangles. This requires a two-pronged approach; our rectangles can either be big enough to completely cover the curve, or be small enough to be completely covered by the curve. 
+      Next, we need to define the heights of our rectangles. :D This requires a two-pronged approach; our rectangles can either be big enough to completely cover the curve, or be small enough to be completely covered by the curve. 
 
       \begin{defi}
         For each sub-interval \([x_{i-1},x_i]\) of \(P\), where \(i \geq 1,\) define
@@ -181,7 +179,8 @@
   This brings us to the following paraphrase of the above paragraph:
 
   \begin{defi}[Integrability]
-    Let \(f: [a,b] \to \R\) be a bounded function. If \(\overline{I_{a}^{b}}(f) = \underline{I_{a}^{b}}(f)\), then we say that \(f\) is \emph{integrable} on \([a,b]\), and we denote the integral as \(\int_{a}^{b}{f(x) \,dx}\).
+    \everymath{\displaystyle}
+    Let \(f: [a,b] \to \R\) be a bounded function. If \(\overline{I_{a}^{b}}(f) = \underline{I_{a}^{b}}(f)\), then we say that \(f\) is \emph{integrable} on \([a,b]\), and we denote the integral as \(\int_{a}^{b}{f(x) \d x}\).
   \end{defi}
 
 
@@ -221,7 +220,6 @@
       0 < U_f(P) = \sum_{i = 1}^{n}{M_i(x_i - x_{i-1})} = \sum_{i = 1}^{n}{1 \cdot (x_i - x_{i-1})} \leq 2
     \]
     for all partitions \(P\) of [-1,1]. Thus, \(\overline{I_{-1}^{1}}(f) = \inf\{(0,2]\} = 0\).
-    \vspace*{5pt}
     We have shown that \(\overline{I_{-1}^{1}}(f) = \underline{I_{-1}^{1}}(f) = 0\), so \(f\) is integrable on [-1,1], as needed.
   \end{proof}
 
@@ -246,7 +244,7 @@
 
   We can solidify our criteria for integrability. For the supremum of one set to be equal to the iniumum of another set, it is intuitive to see that their elements have to be arbitrarily close to each other; hence, the below criteria.
   \begin{defi}[The "\(\varepsilon\)-characterization" of integrability]
-    Let \(f\) be a bounded function on \([a,b]\). Then \(f\) is integrable \textbf{if and only if} \(\forall \varepsilon > 0 \) there exists a partition \(P_{\varepsilon}\) of \([a,b]\) such that \(U_f(P) - L_f(P) < \varepsilon\).
+    Let \(f\) be a bounded function on \([a,b]\). Then \(f\) is integrable if and only if \(\, \forall \varepsilon > 0 \) there exists a partition \(P_{\varepsilon}\) of \([a,b]\) such that \(U_f(P) - L_f(P) < \varepsilon\).
   \end{defi}
 
   \subsection{The Fundamental Theorem of Calculus}
@@ -316,18 +314,281 @@
     
   \end{proof}
 
+  \subsection{Properties of the Definite Integral}
+
+  \begin{prop}[Properties of the Definite Integral]
+    \everymath{\displaystyle}
+    Let all functions involved be continuous and \(a < b \in \R\).
+    \begin{enumerate}
+      \item if \(f(x) \geq 0\) for all \(x \in [a,b]\), then \(\int_{a}^{b}f(x) \, \d x \geq 0\).
+      \item if \(f(x) \leq g(x)\) for all \(x \in [a,b],\) then \(\int_{a}^{b}f(x) \, \d x \leq \int_{a}^{b}g(x) \, \d x\).
+      \item \(\abs{\int_{a}^{b}f(x) \, \d x} \leq \int_{a}^{b}\abs{f(x)} \, \d x.\)
+      \item If \(m\) is the infimum of \(f\) on \([a,b]\) and \(M\) is the supremum, then \[
+        m(b-a) \leq \int_{a}^{b}f(x) \, \d x \leq M(b-a).
+      \]
+    \end{enumerate}
+  \end{prop}
+
   \pagebreak
 
-
   \section{Integration Techniques}
-  The following are direct corollaries to the \emph{Fundamental Theorem of Calculus}:
+  \subsection{\emph{u-}Substitution}
 
-  \subsection{Integration by Substitution}
-  \begin{thm}[u-substitution]
-    Suppose \(g\) is a function whose derivative \(g'\) is continuous on an \([a,b],\) and suppose that \(f\) is a function that is continuous on \(g[a,b].\) Then, \[
-      \int_{a}^{b}f(g(x))g'(x) \d x = \int_{g(a)}^{g(b)}f(u) \d u.
+  An integral of the form 
+
+  \[
+    \int{f(g(x))g'(x) \d x}
+  \]
+
+  can be written 
+  
+  \[
+    \int{f(u) \d u}
+  \]
+
+  by setting 
+
+  \[
+    u = g(x) \implies \d u = g'(x) \d x.
+  \]
+
+  {
+    \everymath{\displaystyle}
+  \begin{eg}
+  To integrate \(\int(x^2-1)^4 \, 2x \, \d x\), we can notice that \(2x\) is the derivative of \(x^2-1\) and set 
+
+  \[
+    u = x^2-1 \implies \d u = 2x \, \d x.
+  \]
+
+  Then 
+
+  \[
+    \int(x^2-1)^42x \, \d x = \int u^4 \, \d u = \frac{u^5}{5} + C = \frac{(x^2-1)^5}{5} + C.
+  \]
+  \end{eg}
+
+  \begin{eg}
+    To integrate \(\int 3x^2 \cos(x^3+2) \, \d x\), we can set 
+
+    \[
+      u = x^3+2 \implies \d u = 3x^2 \, \d x.
+    \]
+
+    Then 
+
+    \[
+      \int 3x^2 \cos(x^3+2) \, \d x = \int \cos(u) \, \d u = \sin(u) + C = \sin(x^3+2) + C.
+    \]
+  \end{eg}
+
+  \begin{eg}
+    To integrate \(\int x^2 \sqrt{4+x^3} \, \d x\), we set 
+
+    \[
+      u = 4+x^3 \implies \d u = 3x^2 \, \d x.
+    \]
+
+    Then 
+
+    \[
+      \int x^2 \sqrt{4+x^3} \, \d x = \frac{1}{3}\int \sqrt{u} \, \d u = \frac{2}{9}u^{3/2} + C = \frac{2}{9}(4+x^3)^{3/2} + C.
+    \]
+  \end{eg}
+  }
+
+  \subsection{Integration by Parts}
+
+  The product rule for differentiation is
+  \[
+    (f(x)g(x))' = f'(x)g(x) + f(x)g'(x).
+  \]
+
+  Integrating both sides, we get 
+
+  \[
+    \int{(f(x)g(x))' \d x} = \int{f'(x)g(x) \d x} + \int{f(x)g'(x) \d x}.
+  \]
+
+  Note that since
+
+  \[
+    \int{(f(x)g(x))' \d x} = f(x)g(x) + C,
+  \]
+
+  we have that 
+
+  \[
+    f(x)g(x)+ C = \int{f'(x)g(x) \d x} + \int{f(x)g'(x) \d x}.
+  \]
+
+  and therefore 
+
+  \[
+    \int{f(x)g'(x) \d x} = f(x)g(x) - \int{f'(x)g(x) \d x} + C.
+  \]
+
+  Note that the calculation of \(\int{f'(x)g(x) \, \d x}\) will result in its own constant, which is why we don't need to add a constant to the right-hand side of the equation.
+
+  I'm not going to give integration examples here, because they're tedious to type out. The playlist has a lot of examples, so I recommend watching that.
+
+  \subsection{Partial Fractions}
+
+  Partial fractions are a way of decomposing a rational function \(\frac{P(x)}{Q(x)}\) into a sum of terms with denominators of degrees less than \(Q(x)\) when a factorisation of \(Q(x)\) is known. First, a rational function is said to be \textbf{proper} if the degree of the numerator is less than the degree of the denominator. If the degree of the numerator is greater than or equal to the degree of the denominator, the rational function is said to be \textbf{improper}. Improper integrals can be reduced to proper ones by polynomial long division.
+
+  \begin{thm}[Partial Fraction Decomposition] Let \(f(x), \, g(x)\) be polynomials over \(\R [x]\) such that deg \(f <\) deg \(g\) and where \(g(x)\) can be written as a product of distinct linear and quadratic irreducible quadratic factors that may repeat, namely:
+
+    \[
+      g(x) = \prod_{i=1}^{n}{(a_i x + b_i)^{r_i}} \cdot \prod_{j=1}^{m}{(c_j x^2 + d_j x + e_j)^{s_j}}
+    \]
+
+    where \(a_i, b_i, c_j, d_j, e_j \in \R\), \(r_i, s_j \in \N\). Then, there exist unique real constants \(A_{ij}, B_{ij}, C_{ijk}\) such that
+
+    \[
+      \frac{f(x)}{g(x)} = \sum_{i=1}^{n}{\sum_{j=1}^{r_i}{\frac{A_{ij}}{(a_i x + b_i)^j}}} + \sum_{k=1}^{m}{\sum_{l=1}^{s_k}{\frac{B_{kl}x + C_{kl}}{(c_k x^2 + d_k x + e_k)^l}}}
     \]
   \end{thm}
+
+  I, like you, have no idea what this means. The importance of this theorem is that it gives us a method for finding the partial fraction decomposition of a rational expression, provided the irreducible factors of the denominator are known. Note that provided the fraction is proper, \(f(x)\) plays no role in how a prtial fraction decomposition is formed. 
+
+  I'll now consider each of the four separate cases that can arise when decomposing a rational function into partial fractions.
+
+
+  \subsubsection*{Case 1 - \(\mathbf{Q(x)}\) is a product of distinct linear factors}
+
+  If \(Q(x)\) can be written as
+
+  \[
+    Q(x) = (a_1x + b_1)(a_2x + b_2) \ldots (a_nx + b_n),
+  \]
+
+  each linear factor can be written in the form \(\frac{A}{ax+b}\). Namely,
+
+  \[
+    \frac{P(x)}{Q(x)} = \frac{A_1}{a_1x + b_1} + \frac{A_2}{a_2x + b_2} + \ldots + \frac{A_n}{a_nx + b_n}.
+  \]
+
+  where each \(A_i\) is a constant to be found.
+
+  \subsection{List of Helpful Integrals (and Obscure Integration Techniques)}
+  {
+    \everymath{\displaystyle}
+    \subsubsection*{Powers}
+    \begin{enumerate}
+      \item \(\int x^n \, \d x = \frac{x^{n+1}}{n+1} + C\)
+      \item \(\int \frac{1}{x} \, \d x = \ln\abs{x} + C\)
+    \end{enumerate}
+
+    \subsubsection*{Exponentials}
+    \begin{enumerate}
+      \item \(\int e^x \, \d x = e^x + C\)
+      \item \(\int a^x \, \d x = \frac{a^x}{\ln a} + C\)
+      \item \(\int \ln(x) \, \d x = x \ln(x) - x + C\)
+    \end{enumerate}
+
+    \subsubsection*{Trigonometric Functions}
+    \begin{enumerate}
+      \item \(\int \sin(x) \, \d x = -\cos(x) + C\)
+      
+      \item \(\int \sin^n(x) \, \d x = -\frac{\sin^{n-1}(x) \cos(x)}{n} + \frac{n-1}{n} \int \sin^{n-2}(x) \, \d x\)
+      
+      \item \(\int \cos(x) \, \d x = \sin(x) + C\)
+      
+      \item \(\int \cos^n(x) \, \d x = \frac{\cos^{n-1}(x) \sin(x)}{n} + \frac{n-1}{n} \int \cos^{n-2}(x) \, \d x\)
+      
+      \item \(\int \tan(x) \, \d x = -\ln\abs{\cos(x)} + C\)
+      
+      \item \(\int \tan^n(x) \, \d x = \frac{1}{n-1} \tan^{n-1}(x) - \int \tan^{n-2}(x) \, \d x\)
+      
+      \item \(\int \cos^n(x) \, \d x = \frac{\cos^{n-1}(x) \sin(x)}{n} + \frac{n-1}{n} \int \cos^{n-2}(x) \, \d x\)
+      
+      \item \(\int \sec(x) \, \d x = \ln\abs{\sec(x) + \tan(x)} + C\)
+      
+      \item \(\int \csc(x) \, \d x = \ln\abs{\csc(x) -\cot(x)} + C\)
+       
+    \end{enumerate}
+
+    Most of these identites (save for the reduction formulae)  can be derived really quickly on the fly, so there isn't much need to memorize them. However, there are six integrals I've committed to memory (an act that has saved me a million times over) that are of the following two types:
+    \begin{align*}
+      \int \frac{\d x}{ax^2 + bx + c} \quad \text{and} \quad \int \frac{\d x}{\sqrt{ax^2 + bx + c}}
+    \end{align*}
+
+    where \(a, b,\) and \(c\) take on various real values with \(a \neq 0\). I'm going to skip their derivations and just list them out in a fancy table, but \emph{don't replicate my laziness}. Try to derive these yourself (you will need to know trig substitution for the second type).
+
+    \subsubsection*{Six Useful Integrals}
+    \begin{enumerate}
+      \item \(\int \frac{\d x}{\sqrt{a^2-x^2}} = \sin^{-1}\left(\frac{x}{a}\right)\), \hspace*{1cm} \(a > 0, \abs{x} < a\).
+      
+      \item \(\int \frac{\d x}{\sqrt{x^2+a^2}} = \ln\abs{x + \sqrt{x^2 + a^2}}\), \hspace*{1cm} \(a > 0\)
+    
+      \item \(\int \frac{\d x}{\sqrt{x^2 - a^2}} = \ln\abs{x + \sqrt{x^2 + a^2}}\), \hspace*{1cm} \(0 < a < x\)
+      
+      \item \(\int \frac{\d x}{a^2 + x^2} = \frac{1}{a}\tan^{-1}\left(\frac{x}{a}\right)\),\hspace*{1cm} \(a \neq 0\)
+      
+      \item \(\int \frac{\d x}{a^2 - x^2} = \frac{1}{2a}\ln\abs{\frac{a+x}{a-x},}\) \hspace*{1cm} \(a > 0\), \(\abs{x} < a\)
+      
+      \item \(\int \frac{\d x}{x^2 - a^2} = \frac{1}{2a} \ln\abs{\frac{x-a}{x+a}}\), \hspace*{1cm} \(a > 0\), \(\abs{x} > a\)
+    \end{enumerate}
+
+    These results lead to many cooler results, but unfortunately our exam won't be on obscure reduction formulae and integrand manipulations. I'll omit examples of these, but feel free to ask me about them if you're interested.
+
+    \subsubsection*{Symmetric Substitution}
+    A \emph{symmetric substitution} is a substitution of the form 
+
+    \[
+      u = x^a \pm \frac{1}{x^a}, \quad a \neq 0
+    \]
+
+    We apply this substitution to integrals where terms in the integrand consist of a term in the form of the symmetric substtution for \(u\), together with a term of the form 
+
+    \[
+      x^{a-1}  \mp \frac{1}{x^{a-1}}.
+    \]
+
+    This substitution can be surprisingly useful when used with certain rational integrals. I'll give an example.
+
+    \begin{eg}
+      We will find \(\int \frac{x^2-1}{x^4 + 3x^2 + 1} \, \d x\). 
+      \vspace*{0.5cm}
+
+      Manipulating the integrals as follows,
+
+      \begin{align*}
+        \int \frac{x^2-1}{x^4+3x^2+1} \d x &= \int \frac{x^2-1}{x^2(x^2 + \frac{1}{x^2}+3)} \d x = \int \frac{1 - \frac{1}{x^2}}{x+\frac{1}{x^2} + 3} \d x \\ 
+        &= \int \frac{1 - \frac{1}{x^2}}{(x+\frac{1}{x})^2 + 1} \d x
+      \end{align*}
+
+      In this form, we can make the following symmetric substitution:
+
+      \[
+        u = x + \frac{1}{x} \implies \d u = (1 - \frac{1}{x^2}) \d x.
+      \]
+
+      Thus 
+
+      \[
+        \int \frac{x^2-1}{x^4+3x^2+1} \d x = \int \frac{1}{u^2 + 1} \d u = \tan^{-1}(u) + C = \tan^{-1}(x + \frac{1}{x}) + C.
+      \]
+    \end{eg}
+    
+    \subsubsection*{Integrating Inverse Functions}
+    \begin{thm}[Definite Integral of an Inverse Function] Let \(f\) be a strictly monotonic function with a continuous derivative on the interval \([a,b]\). Then 
+
+      \[
+        \int_{a}^{b}f(x) \, \d x + \int_{f(a)}^{f(b)}f^{-1}(x) \, \d x = bf(b) - af(a).
+      \]
+    \end{thm}
+
+    \begin{thm}[Indefinite Integral of an Inverse Function] Let \(f\) be a strictly monotonic function with a continuous derivative on the interval \([a,b]\). Then 
+
+      \[
+        \int f(x) \, \d x = xf(x) - \int f^{-1}(x) \, \d x.
+      \]
+      
+    \end{thm}
+
+  }
+
 
   \section{Sequences}
   \subsection{Intro}
@@ -335,16 +596,377 @@
   \begin{defi}[Sequence]
     A \emph{sequence} is a function \(a: \N \to \R\). Usually (i.e. always) we write \(a_n\) instead of \(a(n)\) to denote the \(n\)th term of the sequence. To differentiate it from a function called \(a\), we write \((a_n)_{n=0}^{\infty}\). 
     \end{defi}
-    Sequences, like functions, can be bounded. 
+    Sequences share many properties with functions (with some obvious tweaks), as stated below.
 
-    \begin{defi}[Boundedness]
-      A sequence \((a_n)\) is \emph{bounded above} if there exists a number \(M \in \R\) such that \(a_n \leq M\) for all \(n \in \N\). Likewise, \((a_n)\) is \emph{bounded below} if there exists a number \(m \in \R\) such that \(a_n \geq m\) for all \(n \in \N\). If both a lower and upper bound exist, the sequence is \emph{bounded.}
+
+    \begin{defi}
+      Let \(a_n\) be a sequence.
+      \begin{enumerate}
+        \item \(a_n\) is \textbf{increasing} if \(a_n < a_{n+1}\) and \textbf{non-decreasing} if \(a_n \leq a_{n+1}\).
+        \item \(a_n\) is \textbf{decreasing} if \(a_n > a_{n+1}\) and \textbf{non-increasing} if \(a_n \geq a_{n+1}\).
+        \item \(a_n\) is \textbf{bounded below} if there exists \(m \in \R\) such that \(a_n \geq m\) for all \(n \in \N\).
+        \item \(a_n\) is \textbf{bounded above} if there exists \(M \in \R\) such that \(a_n \leq M\) for all \(n \in \N\).
+        \item \(a_n\) is \textbf{bounded} if it is bounded above and below.
+      \end{enumerate}
     \end{defi}
+
 
     \subsection{Convergent Sequences}
 
-    \begin{defi}
-      A sequence \((a_n)\) \emph{converges} to \(L \in \mathds{R}\) if for all \(\varepsilon > 0\) there exists some \(N \in \R\) such that for all \(n \in \N, n \geq N \implies \abs{a_n - L} < \varepsilon\).
+    Consider the sequence \(1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4},\cdots.\) Intuitively, this sequence converges to 0. We can formalize this intuition as follows:
+
+    \begin{defi}[Convergent and Divergent Sequences]
+      A sequence \((a_n)_{n=0}^{\infty}\) \emph{converges} to \(L \in \R\) if for all \(\varepsilon > 0\) there exists some \(N \in \R\) such that for all \(n \in \N, n \geq N \implies \abs{a_n - L} < \varepsilon\). We call such a sequence \emph{convergent}. A sequence \((a_n)_{n=0}^{\infty}\) is \emph{divergent} if it is not convergent.
     \end{defi}
 
+    \begin{remark}
+      The following are different notations for the same concept:
+      \begin{itemize}
+        \item \(\lim_{n \to \infty}a_n = L\)
+        \item \(a_n \to L\) as \(n \to \infty\)
+        \item \(a_n \to L\)
+        \item The sequence \((a_n)_{n=0}^{\infty}\) converges to \(L\).
+        \end{itemize}
+    \end{remark} 
+
+    \begin{thm}[Sequences defined from Functions]
+      Let \(f\) be a function with domain at least \([0, \infty]\). Let \(L \in \R\). Define a sequence \((a_n)_{n=0}^{\infty}\) by \(a_n = f(n)\). Then, the following hold:
+
+      \begin{enumerate}
+        \item If \(\lim_{x \to \infty}f(x) = L\), then \(\lim_{n \to \infty}a_n = L\).
+        \item If \(\lim_{n \to \infty}a_n = L\), then \(\lim_{x \to \infty}a_{n+1} = L\).
+        \item If \(f\) is increasing, then \((a_n)_{n=0}^{\infty}\) is increasing.
+      \end{enumerate}
+    \end{thm}
+
+    \begin{note}
+      If a sequence \((a_n)_{n=0}^{\infty}\) is defined from a function, then the properties of the function \textbf{\emph{probably}} translate to the equivalent properties of the sequence, but not vice versa. In fact, some sequences are not defined by functions at all, such as the factorial.
+      \end{note}
+
+    *Some* tools we have established for evaluating limits of functions can be used to evaluate limits of sequences. In particular,
+
+    \begin{thm}[Sequence Limit Laws]
+      \everymath{\displaystyle}
+      Let \((a_n)_{n=1}^{\infty}\) and \((b_n)_{n=1}^{\infty}\) be sequences converging to \(L\) and \(M\) respectively. Then,
+      \begin{enumerate}
+        \item \(\lim_{n \to \infty}(a_n + b_n) = L + M\)
+        \item \(\lim_{n \to \infty}(a_n - b_n) = L - M\)
+        \item \(\lim_{n \to \infty}(c \cdot a_n) = c \cdot L\) for any \(c \in \R\)
+        \item \(\lim_{n \to \infty}(a_n \cdot b_n) = L \cdot M\)
+
+      \end{enumerate}
+    \end{thm}
+
+    The following theorem establishes a relationship between the convergence of a sequence and its boundedness.
+    
+    \begin{thm}[Convergence \(\implies\) Boundedness]
+        Let \((a_n)_{n=0}^{\infty}\) be a sequence. If \((a_n)_{n=0}^{\infty}\) converges, then it is bounded.
+    \end{thm}
+
+    \subsection{Monotone Convergence Theorem}
+    \begin{thm}
+      If a sequence is increasing and bounded above, then it is convergent.
+    \end{thm}
+    
+    \subsection{The BIG Theorem}
+    \begin{defi}
+      Let \((a_n)\) and \((b_n)\) be positive sequences. We say that \((a_n)\) is \textbf{much smaller} than \((b_n)\) if
+      \[
+        \lim_{n \to \infty}\frac{a_n}{b_n} = 0.
+      \]
+    
+      We write \((a_n) \ll (b_n)\) to denote this relation.
+    \end{defi} 
+    
+    \begin{eg}
+      \(n \ll n^3\) because \(\lim_{n \to \infty} \frac{n}{n^3} = 0\).
+    \end{eg}
+    
+    The above is a shorthand way of saying that one sequence grows more slowly than another. 
+    
+    The following theorem establishes a heirarchy among the most common families of sequences.
+    
+    \begin{thm}[The ``Big Theorem"]
+      Let \(n\) be a natural number, and let \(a > 0, b > 1\). Then,
+      \[
+        \ln{n} \ll n^a \ll b^n \ll n! \ll n^n
+      \]
+    \end{thm}
+    
+    \begin{proof}
+      Most of them are direct applications of L'Hopital's Rule, and are covered in \href{https://youtu.be/Dd3n2rfqxf4?si=sRu9ItBn7WwUNnSj}{11.7}. 
+    \end{proof}
+
+    \section{Series}
+
+    \subsection{Introduction}
+
+    A sum of infinitely many numbers is called a \emph{series}. 
+
+    \begin{defi}[Series]
+      Given a series \(\displaystyle\sum_{n=1}^{\infty}a_n\): 
+      \begin{itemize}
+        \item The numbers \(a_n\) are called the \emph{terms} of the series.
+        \item The \emph{sequence of partial sums} is the sequence \((S_k)_{k=1}^{\infty}\) defined by \(S_n = \displaystyle\sum_{n=1}^{k}a_n\).
+        \item The series  \(\displaystyle\sum_{n=1}^{\infty}a_n\) \emph{converges} if \(\displaystyle\lim_{k \to \infty}S_k = L\). 
+      \end{itemize}
+      
+    \end{defi}
+
+    \begin{thm}[Series *limit* laws]
+      Suppose \(\displaystyle\sum_{n=1}^{\infty}a_n\) and \(\displaystyle\sum_{n=1}^{\infty}b_n\) are convergent series to \(\alpha\) and \(\beta\) respectively. Then:
+      \begin{enumerate}
+        \item \(\displaystyle\sum_{n=1}^{\infty}(a_n + b_n)\) converges to \(\alpha + \beta\),
+        \item \(\displaystyle\sum_{n=1}^{\infty}(a_n - b_n)\) converges to \(\alpha - \beta\),
+        \item \(\displaystyle\sum_{n=1}^{\infty}c \cdot a_n\) converges to \(c \cdot \alpha\) for any \(c \in \R\).
+      \end{enumerate}
+    \end{thm}
+
+    \subsection{Series Convergence tests}
+    We'll now establish a \emph{bunch} of convergence tests.
+
+    \begin{thm}[Convergence of Series \(\implies\) Convergence of Sequence]
+      If the series \(\displaystyle\sum_{n=1}^{\infty}a_n\) converges, then the sequence \((a_n)\) converges to 0.
+    \end{thm}
+
+    \begin{proof}
+      This theorem was proved in the lecture slides.
+    \end{proof}
+
+    The contrapositive of the above theorem is also known as the \emph{divergence test}. Note that the converse is \emph{\textbf{FALSE!!!}}.
+{
+  \everymath{\displaystyle}
+    \begin{eg}
+      
+      Consider \(\sum_{n=1}^{\infty} \frac{n}{n+1}\). Note that \(\lim_{n \to \infty}\frac{n}{n+1} = 1 \neq 0\), which means that the series diverges by the divergence test.
+    \end{eg}
+
+    \begin{eg}
+      Consider \(\sum_{n=1}^{\infty} \sin{n}\). Note that \(\lim_{n \to \infty}\sin{n} \neq 0\), which means that the series diverges by the divergence test.
+    \end{eg}
+
+    \begin{eg}[Harmonic Series]
+      Let \(a_n = \frac{1}{n}\). Note that despite the sequence \((a_n)\) converging to 0, the series \(\displaystyle \sum_{n=1}^{\infty}\frac{1}{n}\) diverges (as can be shown by the integral test).
+    \end{eg}
+}
+
+    A test for a more general class of functions is the \emph{p-test}.
+
+    \begin{prop}[The series \emph{p}-test]
+      \everymath{\displaystyle}
+      Let \(p \in \R\). The series \(\sum_{n=1}^{\infty}\frac{1}{n^p}\) converges if and only if \(p > 1\).
+    \end{prop}
+    One class of series is particularly nice, and is called the \emph{geometric series}.
+
+    \begin{defi}[Geometric Series]
+      Let \(a, r \in \R\). A series of the form 
+      \[
+        \sum_{n=1}^{\infty}ar^n = a + ar + ar^2 + \ldots
+      \]
+      is called a \emph{geometric series}.
+    \end{defi}
+
+    There's surprisingly a lot to say about geometric series from my looking into them, but I'll keep those thoughts to myself until I need some very topical icebreakers. Right now, I'll just state the following theorem which makes studying them useful:
+
+    \begin{prop}[Geometric Series Convergence]
+      Let \(a, r \in \R\). The geometric series \(\displaystyle\sum_{n=1}^{\infty}ar^n\) converges if and only if \(\abs{r} < 1\). In this case, the sum of the series is 
+      \[
+        \frac{a}{1-r}.
+      \]
+    \end{prop}
+
+    \begin{proof}
+      Proof by vigorous handwaiving.
+    \end{proof}
+
+
+    \begin{prop}[Basic Comparison Test for Series]
+      \everymath{\displaystyle}
+      \normalfont Let \(\sum_{n=1}^{\infty}a_n\) and \(\sum_{n=1}^{\infty}b_n\) be two series such that 
+      \[
+        \exists M \in \N \text{ such that } \forall n \geq M, 0 \leq a_n \leq b_n.
+      \]
+      \noindent
+      Then:
+      \begin{enumerate}
+        \item If \(\sum_{n=1}^{\infty}b_n\) converges, then \(\sum_{n=1}^{\infty}a_n\) converges.
+        \item If \(\sum_{n=1}^{\infty}a_n\) diverges, then \(\sum_{n=1}^{\infty}b_n\) diverges.
+        \end{enumerate}
+    \end{prop}
+
+    \begin{proof}[\textbf{Proof by reducing it to the wrong problem:}] To see this theorem's validity, reduce it to the exponential time hypothesis.
+    \end{proof}
+
+    \begin{prop}[Integral Test]
+      \everymath{\displaystyle}
+      Let \(f\) be a continuous, positive, \emph{decreasing} function on \([a,\infty)\). Then 
+      \[
+      \sum_{n=1}^{\infty}f(n) \text{ converges} \iff \int_{1}^{\infty}f(x) \, \d x \text{ converges}.
+      \]
+      \end{prop}
+
+      {
+       \everymath{\displaystyle} 
+       \begin{eg}
+        Consider \(\sum_{n=1}^{\infty}\frac{1}{k\ln(k+1)}\). The summand's function\(f(x) = \frac{1}{x\ln(x+1)}\) clearly satisfies the hypotheses of the Integral  Test, so we may use it. First, note that for all \(x \in [1, \infty)\):
+
+        \[
+          \frac{1}{x\ln(x+1)} > \frac{1}{(x+1)\ln(x+1)}.
+        \]
+       \end{eg}
+
+       Therefore we have:
+
+        \[
+          \int_{1}^{a}\frac{1}{x\ln(x+1)} \, \d x > \int_{1}^{a}\frac{1}{(x+1)\ln(x+1)} \, \d x = \ln(\ln(x+1))\Big|_{1}^{a} = \ln(\ln(a+1)) - \ln(\ln(2)).
+        \]
+
+        Note that as \(a \to \infty\), \(\ln(\ln(a+1)) - \ln(\ln(2)) \to \infty\), so the integral diverges. Therefore, the series \(\sum_{n=1}^{\infty}\frac{1}{k\ln(k+1)}\) diverges by the Integral Test.
+
+      }
+
+    {
+
+    \everymath{\displaystyle}
+      \begin{eg}
+        Consider \(\sum_{n=1}^{\infty}\frac{1}{2k^3+1}\). Note that \(\frac{1}{2k^3+1} < \frac{1}{k^3}\) for all \(k \in \N\). Since \(\sum_{n=1}^{\infty}\frac{1}{k^3}\) converges, we have that \(\sum_{n=1}^{\infty}\frac{1}{2k^3+1}\) converges by comparison.
+      \end{eg}
+
+      \begin{eg}
+        Consider \(\sum_{n=1}^{\infty}\frac{k^3}{k^5+5k^4+7}\). Note that \(\frac{k^3}{k^5+5k^4+7} < \frac{k^3}{k^5}= \frac{1}{k^2}\). Since \(\sum_{n=1}^{\infty}\frac{1}{k^2}\) converges, we have that \(\sum_{n=1}^{\infty}\frac{k^3}{k^5+5k^4+7}\) converges by comparison.
+      \end{eg}
+
+      \begin{eg}
+        For a trickier example, consider \(\sum_{n=1}^{\infty}\frac{1}{\ln(k+6)}\). By the Big Theorem, we know that eventually, \(k\) dominates \(\ln(k+6)\), and therefore \(\frac{1}{\ln(k+6)} > \frac{1}{k}\). We can therefore compare this series to \(\sum_{n=1}^{\infty}\frac{1}{k}\), which diverges. Thus, \(\sum_{n=1}^{\infty}\frac{1}{\ln(k+6)}\) diverges by comparison.
+      \end{eg}
+    }
+
+      
+      \begin{prop}[Limit Comparison Test]
+        \everymath{\displaystyle}
+        \normalfont
+        Let \(\sum_{n=1}^{\infty}a_n\) and \(\sum_{n=1}^{\infty}b_n\) be two \emph{positive} series.
+      
+        If \(\lim_{n \to \infty}\frac{a_n}{b_n} = L\) for some \(L \in \R^+\), then
+        \begin{enumerate}
+          \item If \(\sum_{n=1}^{\infty}b_n\) converges, then \(\sum_{n=1}^{\infty}a_n\) converges.
+          \item If \(\sum_{n=1}^{\infty}a_n\) diverges, then \(\sum_{n=1}^{\infty}b_n\) diverges.
+          \end{enumerate}
+      \end{prop}
+      
+      Examples for the Limit Comparison Test are tedious to type out, so I'll just refer you to the course slides for some.
+      
+      \begin{prop}[Alternating Series Test]
+        \everymath{\displaystyle}
+        \normalfont
+        Let \((a_n)\) be a positive sequence.
+      
+        If \((a_n)\) is decreasing and \(\lim_{n \to \infty}a_n = 0\), then \(\sum_{n=1}^{\infty}(-1)^{n}a_n\) converges.
+      \end{prop}
+
+
+      \subsection{Absolute Convergence}
+      The Alternating Series Test (hopefully) convinced you that, if anything, alternating series are \emph{more likely} to converge than their non-alternating counterparts. It should also be inutitive to think that, if the sum of the \emph{absolute values} of all of individual terms of a series converges, then the original series must also converge, too. 
+
+      \begin{prop}
+        \everymath{\displaystyle}
+        Let \(\sum_{n=1}^{\infty}a_n\) be a series. If \(\sum_{n=1}^{\infty}\abs{a_n}\) converges, then \(\sum_{n=1}^{\infty}a_n\) converges.
+      \end{prop}
+
+      \begin{defi}[Absolute and Conditional Convergence]
+        \everymath{\displaystyle}
+        Let \(\sum_{n=1}^{\infty}a_n\) be a series. We define the following:
+        \begin{enumerate}
+          \item If \(\sum_{n=1}^{\infty}\abs{a_n}\) converges, then \(\sum_{n=1}^{\infty}a_n\) is \emph{absolutely convergent}.
+          \item If \(\sum_{n=1}^{\infty}\abs{a_n}\) diverges, but \(\sum_{n=1}^{\infty}a_n\) converges, then \(\sum_{n=1}^{\infty}a_n\) is \emph{conditionally convergent}.
+        \end{enumerate}
+      \end{defi}
+
+      Rearranging infinite series is generally not a good idea. We use the following theorem about reordering series without proof.
+
+      \begin{thm}
+          If a series is \emph{conditionally} convergent, then its terms can be rearranged to converge to any real number (or simply diverge!).
+
+          Alternatively (haha), is a series is \emph{absolutely} convergent, then its terms can be reordered without changing the sum.
+      \end{thm}
+
+
+      \subsection{The Ratio and Root Tests}
+      I just can't resist more convergence tests. The next two tests are derived by comparison to geometric series.
+
+      \begin{prop}[Ratio Test]
+        \everymath{\displaystyle}
+        Let \(\sum_{n=1}^{\infty}a_n\) be a series. Suppose that the sequence \((a_n)\) is positive. Assume that 
+        \[
+          \lim_{n \to \infty}\frac{a_{n+1}}{a_n}
+        \]
+        converges to some \(L \in \R\) or diverges to \(\infty\).
+        Then:
+        \begin{enumerate}
+          \item If \(L < 1\), then \(\sum_{n=1}^{\infty}a_n\) is \emph{absolutely convergent}.
+          \item If \(L > 1\) or \(L = \infty\), then \(\sum_{n=1}^{\infty}a_n\) diverges.
+          \item If \(L = 1\), then the test is inconclusive.
+        \end{enumerate}
+      \end{prop}
+
+      \begin{eg}
+        \everymath{\displaystyle}
+        The ratio test shows that the series \(\sum_{n=1}^{\infty}\frac{1}{n!}\) converges:
+        \[
+          \lim_{n \to \infty}\frac{a_{n+1}}{a_n} = \lim_{n \to \infty}\frac{1}{n+1} = 0.
+        \]
+      \end{eg}
+
+      \begin{eg}
+        \everymath{\displaystyle}
+        Consider the series \(\sum_{n = 1}^{\infty}\frac{n^n}{n!}\):
+
+        \[
+          \lim_{n \to \infty}\frac{a_{n+1}}{a_n} = \lim_{n \to \infty}\frac{(n+1)^{n+1}}{(n+1)!} \cdot \frac{n!}{n^n} = \lim_{n \to \infty}\frac{(n+1)^{n}}{n^n} = \lim_{n \to \infty}\left(1 + \frac{1}{n}\right)^n = e > 1,
+        \]
+
+        and so the series diverges by the Ratio Test.
+      \end{eg}
+
+      \begin{prop}[Root Test]
+        Let \(\sum_{n=1}^{\infty}a_n\) be a series. Suppose that the sequence \((a_n)\) is nonnegative. Assume that 
+        \[
+          \lim_{n \to \infty}(a_n)^{1/n}
+        \]
+        converges to some \(L \in \R\) or diverges to \(\infty\).
+      \end{prop}
+
+      \begin{note}
+        Generally, the root test is used only if poweres are involved. The ratio test is particularly effective with factorials and with combinations of powers and factorials. The basic comparison tests and limit comparison tests are used most for rational series (the \emph{p}-series tests cana be especially good candidates for comparison). 
+      \end{note}
+    \section{Power Series and Taylor Series}
+    \subsection{Power Series}
+    \begin{defi}[Power Series]
+      A \emph{power series} is a series of the form 
+      \[
+        \sum_{n=0}^{\infty}c_n(x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2 + \ldots
+      \]
+      where \(a, c_0, c_1, c_2, \ldots \in \R\).
+    \end{defi}
+
+    \begin{eg}
+      \everymath{\displaystyle}
+      Determine for what values of \(x\) the series \(\sum_{n=0}^{\infty}\frac{x^n}{n!}\) converges.
+    \end{eg}
+
+    \begin{proof}[Solution]
+      Consulting the definition we see that this is a power series with \(a = 0\), \(c_n = \frac{1}{n!}\). The Ratio Test will be our winning strategy here:
+
+      \begin{align*}
+        \frac{\abs{a_{n+1}x^{n+1}}}{\abs{a_nx_n}} = \frac{\abs{x}^{n+1}}{(n+1)!} \cdot \frac{n!}{\abs{x}^n} = \frac{\abs{x}}{n+1}
+      \end{align*}
+
+      which converges to 0 as \(n \to \infty\). Therefore, the series converges absolutely.
+    \end{proof}
+
+    \subsection{Properties of Power Series}
+    \begin{prop}[Properties of Power Series]
+      
+    \end{prop}
+    
 \end{document}
